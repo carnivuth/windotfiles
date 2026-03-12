@@ -1,0 +1,227 @@
+" USEFULL DOC FOR SCRIPTING
+" useful link for vimscripting
+" - https://devhints.io/vimscript
+" - https://learnvimscriptthehardway.stevelosh.com
+" - https://github.com/junegunn/fzf/blob/master/README-VIM.md
+
+" PLUGINS
+if filereadable(expand("~/.config/vim/autoload/plug.vim"))
+  call plug#begin()
+
+  " fzf plugin
+  Plug 'junegunn/fzf'
+
+  " statusline
+  Plug 'vim-airline/vim-airline'
+  Plug 'bling/vim-bufferline'
+
+  " ale plugin
+  Plug 'dense-analysis/ale'
+
+  " catppuccin
+  Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+
+  " ranger
+  Plug 'rafaqz/ranger.vim'
+  "Plug 'kdheepak/lazygit.nvim/plugin/lazygit.vim'
+
+  call plug#end()
+endif
+
+" OPTIONS
+
+" option for catppuccin
+set termguicolors
+
+" set colorscheme
+if exists("*plug#begin")
+  silent! colorscheme catppuccin_mocha
+else
+  silent! colorscheme slate
+
+endif
+
+" set relative line numbers
+set relativenumber
+
+" enable syntax highlighting
+syntax on
+
+" Disable compatibility with vi which can cause unexpected issues.
+set nocompatible
+
+" Enable type file detection. Vim will be able to try to detect the type of file in use.
+filetype on
+
+" Enable plugins and load plugin for the detected file type.
+filetype plugin on
+
+" Load an indent file for the detected file type.
+filetype indent on
+
+" set space as tab characters and tab dimension to 2
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+" While searching though a file incrementally highlight matching characters as you type.
+set incsearch
+
+" Use highlighting when doing a search.
+set hlsearch
+
+" Set the commands to save in history default number is 20.
+set history=1000
+
+" Enable auto completion menu after pressing TAB.
+set wildmenu
+
+" Make wildmenu behave like similar to Bash completion.
+set wildmode=list:longest
+
+" There are certain files that we would never want to edit with Vim.
+" Wildmenu will ignore files with these extensions.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+" Show partial command you type in the last line of the screen.
+set showcmd
+
+" Show the mode you are on the last line.
+set noshowmode
+
+" enable status line
+set laststatus=2
+
+" set fzf default options
+"let $FZF_DEFAULT_OPTS = '--cycle --bind "ctrl-j:down,ctrl-k:up,alt-j:preview-down,alt-k:preview-up,tab:toggle-up,btab:toggle-down"'
+
+if exists("*plug#begin")
+  " enable default ALE completition
+  let g:ale_completion_enabled = 1
+
+  " remove error highlight
+  let g:ale_set_highlights = 0
+
+  " set error messages format
+  let g:ale_virtualtext_cursor = 'disabled'
+  let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_warning_str = 'W'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+  " enable ALE lint only on filesave
+  let g:ale_lint_on_save = 1
+  let g:ale_fix_on_save = 1
+  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_lint_on_insert_leave = 0
+  let g:ale_fixers = {
+        \   '*': ['remove_trailing_lines', 'trim_whitespace']
+        \}
+endif
+
+
+" KEYMAPS
+" -------------------------------------------------------------------------------------------------------------------------------------
+" set space as the leader key
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
+inoremap jj <ESC>
+
+" find and replace
+nnoremap <Leader>s :s/
+nnoremap <Leader>S :%s/
+
+" packages installation script shortcut
+nnoremap <Leader>pi :PlugInstall<CR>
+nnoremap <Leader>pc :PlugClean<CR>
+
+" format buffer
+nnoremap <Leader>i mfggVG=`fzz
+autocmd BufWritePre :normal mfggVG=`f
+
+" open todo
+nnoremap <Leader>d :edit todo.md<CR>
+
+" vimrc editing and reload bindings
+nnoremap <Leader>Vr :source $MYVIMRC<CR>:AirlineRefresh!<CR>
+nnoremap <Leader>Vc :edit $MYVIMRC<CR>
+
+" common commands for buffers
+nnoremap <Leader>Q :qa!<CR>
+nnoremap <Leader>q :qa<CR>
+nnoremap <Leader>W :wa<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>C :bw!<CR>
+nnoremap <Leader>c :bw<CR>
+nnoremap <Leader>j :bnext<CR>
+nnoremap <Leader>k :bprevious<CR>
+
+if exists("*plug#begin")
+" fzf binds
+nmap <Leader>ff :call fzf#run({'sink':'edit', 'options': '--preview="cat {}"'})<CR>
+nmap <Leader>fc :call fzf#run({'sink':'r ! cat', 'options': '--preview="cat {}"'})<CR>
+nmap <Leader>fg :call fzf#run({'source': 'git ls-files', 'sink':'edit', 'options': '--preview="cat {}"'})<CR>
+endif
+
+if exists("*plug#begin")
+  " ALE bindings
+  nnoremap <Leader>l :ALE
+  nnoremap <Leader>ld :ALEGoToDefinition<CR>
+  nnoremap <Leader>li :ALEGoToImplementation<CR>
+  nnoremap <Leader>ln :ALENext<CR>
+  nnoremap <Leader>lp :ALEPrevious<CR>
+  nnoremap <Leader>lf :ALEFix<CR>
+  nnoremap <Leader>lS :ALEStopAllLSPs<CR>
+endif
+
+" git bindings
+noremap <Leader>gg :!lazygit<CR>
+
+" keep cursor on center when scrolling files
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap { {zz
+nnoremap } }zz
+nnoremap ( (zz
+nnoremap ) )zz
+nnoremap [ [zz
+nnoremap ] ]zz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" add elements to begining and endig of a visual highlighted block
+vnoremap ` <ESC>`>a`<ESC>`<i`<ESC>
+vnoremap ' <ESC>`>a'<ESC>`<i'<ESC>
+vnoremap " <ESC>`>a"<ESC>`<i"<ESC>
+vnoremap ( <ESC>`>a)<ESC>`<i(<ESC>
+vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>
+vnoremap { <ESC>`>a}<ESC>`<i{<ESC>
+vnoremap {{ <ESC>`>a}}<ESC>`<i{{<ESC>
+vnoremap <C-i> <ESC>`>a*<ESC>`<i*<ESC>
+vnoremap <C-b> <ESC>`>a**<ESC>`<i**<ESC>
+
+" copy to clipboard (wayland only)
+if ! empty(glob('/usr/bin/wl-copy'))
+  vnoremap <silent>Y :w !wl-copy<CR><CR>
+  nnoremap <silent>Y :call system("wl-copy", @")<CR>
+endif
+
+" ranger keybinds
+noremap <leader>rr :RangerEdit<cr>
+noremap <leader>rv :RangerVSplit<cr>
+noremap <leader>rs :RangerSplit<cr>
+noremap <leader>rt :RangerTab<cr>
+noremap <leader>ri :RangerInsert<cr>
+noremap <leader>ra :RangerAppend<cr>
+noremap <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
+noremap <leader>rd :RangerCD<cr>
+noremap <leader>rld :RangerLCD<cr>
+
+" vim airline configuration
+
+if exists("*plug#begin")
+  function! AirlineInit()
+    let g:airline_section_c =''
+  endfunction
+  autocmd VimEnter * call AirlineInit()
+endif
