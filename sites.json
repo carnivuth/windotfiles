@@ -48,6 +48,7 @@
   { "site": "prometheus","link": "https://prometheus.carnivuth.org"},
   { "site": "actual","link": "https://actual.carnivuth.org"},
   { "site": "krawl","link": "https://krawl.carnivuth.org"},
+  { "site": "carnivuth-website","link": "https://www.carnivuth.org"},
   { "site": "grafana","link": "https://grafana.carnivuth.org"},
   { "site": "wingfit","link": "https://wingfit.carnivuth.org"},
   { "site": "open-webui","link": "https://open-webui.carnivuth.org"},
