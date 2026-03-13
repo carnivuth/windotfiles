@@ -5,7 +5,8 @@ general:
   startup_commands: [
     'shell-exec zebar',
     'shell-exec C:\Program Files\Microsoft Office\root\Office16\OUTLOOK.EXE',
-    'shell-exec C:\Users\mlonghi\AppData\Roaming\Telegram Desktop\Telegram.exe -startintray'
+    'shell-exec C:\Users\mlonghi\AppData\Roaming\Telegram Desktop\Telegram.exe -startintray',
+    'shell-exec C:\Program Files\Mozilla Firefox\firefox.exe -new-tab "https://navidrome.carnivuth.org"'
   ]
 
   # Commands to run just before the WM is shutdown.
@@ -14,7 +15,8 @@ general:
     'shell-exec taskkill /IM zebar.exe /F',
     'shell-exec taskkill /IM ms-teams.exe /F',
     'shell-exec taskkill /IM OUTLOOK.EXE /F',
-    'shell-exec taskkill /IM Telegram.exe /F'
+    'shell-exec taskkill /IM Telegram.exe /F',
+    'shell-exec taskkill /IM firefox.exe /F'
   ]
 
   # Commands to run after the WM config is reloaded.
@@ -158,7 +160,7 @@ window_rules:
     match:
       - window_process: { regex: "teams" }
 
-  - commands: ['set-floating']
+  - commands: ['set-floating','size --width 80% --height 80%']
     match:
       - window_process: { regex: "Telegram" }
 
