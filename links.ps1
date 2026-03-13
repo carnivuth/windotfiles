@@ -12,7 +12,7 @@ param (
     [string]$JsonFile = ".\sites.json",
 
     [Parameter(Mandatory = $false, HelpMessage = "Destination folder for shortcuts. Defaults to the user's Start Menu Programs folder.")]
-    [string]$OutputFolder = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs",
+    [string]$OutputFolder = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Firefox Web Apps",
 
     [Parameter(Mandatory = $false, HelpMessage = "Path to the Firefox executable. Auto-detected if omitted.")]
     [string]$FirefoxExe = ""
