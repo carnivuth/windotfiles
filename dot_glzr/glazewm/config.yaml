@@ -160,7 +160,7 @@ window_rules:
     match:
       - window_process: { regex: "teams" }
 
-  - commands: ['set-floating','size --width 80% --height 80%']
+  - commands: ['set-floating','position --centered','size --width 80% --height 80%']
     match:
       - window_process: { regex: "Telegram" }
 
@@ -214,11 +214,13 @@ keybindings:
   - commands: ['focus --direction down']
     bindings: ['alt+j', 'alt+down']
 
-  # Change track
-  #- commands: ["exec media next"]
-  #  bindings: ["alt + oem_close_brackets"]
-  #- commands: ["exec media previous"]
-  #  bindings: ["alt + oem_open_brackets"]
+  # Change track next previous 
+  - commands: ["shell-exec '(New-Object -ComObject WScript.Shell).SendKeys([char]176)'"]
+    bindings: ["alt + oem_close_brackets"]
+  - commands: ["shell-exec (New-Object -ComObject WScript.Shell).SendKeys([char]177)"]
+    bindings: ["alt + oem_open_brackets"]
+  - commands: ["shell-exec (New-Object -ComObject WScript.Shell).SendKeys([char]178)"]
+    bindings: ["alt + shift + m"]
 
   # Move focused window in a given direction.
   - commands: ['move --direction left']
