@@ -215,12 +215,12 @@ keybindings:
     bindings: ['alt+j', 'alt+down']
 
   # Change track next previous 
-  - commands: ["shell-exec '(New-Object -ComObject WScript.Shell).SendKeys([char]176)'"]
-    bindings: ["alt + oem_close_brackets"]
-  - commands: ["shell-exec (New-Object -ComObject WScript.Shell).SendKeys([char]177)"]
-    bindings: ["alt + oem_open_brackets"]
-  - commands: ["shell-exec (New-Object -ComObject WScript.Shell).SendKeys([char]178)"]
-    bindings: ["alt + shift + m"]
+  #- commands: ["shell-exec '(New-Object -ComObject WScript.Shell).SendKeys([char]176)'"]
+  #  bindings: ["alt + oem_close_brackets"]
+  #- commands: ["shell-exec (New-Object -ComObject WScript.Shell).SendKeys([char]177)"]
+  #  bindings: ["alt + oem_open_brackets"]
+  #- commands: ["shell-exec (New-Object -ComObject WScript.Shell).SendKeys([char]178)"]
+  #  bindings: ["alt + shift + m"]
 
   # Move focused window in a given direction.
   - commands: ['move --direction left']
