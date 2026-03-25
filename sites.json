@@ -91,6 +91,7 @@
   { "site": "youtube","link": "https://www.youtube.com"},
   { "site": "kentra-project","link": "https://github.com/orgs/kentrasecurity/projects/3"},
   { "site": "yu-gi-oh-pro-decks","link": "https://ygoprodeck.com"},
+  { "site": "my-atlassian","link": "https://www.atlassian.com/purchase/my/"},
   { "site": "jma-vault","link": "https://hashicorp-vault.apps.rdmgmt01.btc.jma.local"},
   { "site": "jma-bitbucket","link": "https://bitbucket.myjmawireless.com"},
   { "site": "jma-confluence","link": "https://confluence.myjmawireless.com/confluence/display/DSO/DevSecOps+Space+-+Private"},
