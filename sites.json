@@ -95,7 +95,7 @@
   { "site": "jma-vault","link": "https://hashicorp-vault.apps.rdmgmt01.btc.jma.local"},
   { "site": "jma-bitbucket","link": "https://bitbucket.myjmawireless.com"},
   { "site": "jma-confluence","link": "https://confluence.myjmawireless.com/confluence/display/DSO/DevSecOps+Space+-+Private"},
-  { "site": "jma-jira","link": "https://jira.myjmawireless.com/jira/secure/Dashboard.jspa?selectPageId=13601#"},
+  { "site": "jma-jira","link": "https://jira.myjmawireless.com/jira/secure/RapidBoard.jspa?rapidView=152&quickFilter=1731#"},
   { "site": "jma-artifactory","link": "https://repo.myjmawireless.com"},
   { "site": "jma-zucchetti","link": "https://saas.hrzucchetti.it"},
   { "site": "epic-games-store","link": "https://store.epicgames.com"}]
