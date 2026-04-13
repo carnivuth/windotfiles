@@ -13,7 +13,6 @@ general:
   # Example: The below command kills Zebar.
   shutdown_commands: [
     'shell-exec taskkill /IM zebar.exe /F',
-    'shell-exec taskkill /IM ms-teams.exe /F',
     'shell-exec taskkill /IM OUTLOOK.EXE /F',
     'shell-exec taskkill /IM Telegram.exe /F',
     'shell-exec taskkill /IM firefox.exe /F'
@@ -132,19 +131,18 @@ window_behavior:
 
 workspaces:
   - name: '1'
-    bind_to_monitor: 1
   - name: '2'
-    bind_to_monitor: 0
   - name: '3'
   - name: '4'
   - name: '5'
   - name: '6'
   - name: '7'
   - name: '8'
+    bind_to_monitor: 0
   - name: '9'
-    bind_to_monitor: 2
+    bind_to_monitor: 0
   - name: '10'
-    bind_to_monitor: 2
+    bind_to_monitor: 0
 
 
 window_rules:
@@ -156,7 +154,7 @@ window_rules:
     match:
       - window_process: { regex: "OUTLOOK" }
 
-  - commands: ["move --workspace 2 ",'focus --workspace 2']
+  - commands: ["move --workspace 8 ",'focus --workspace 8']
     match:
       - window_process: { regex: "teams" }
 
@@ -213,14 +211,6 @@ keybindings:
     bindings: ['alt+k', 'alt+up']
   - commands: ['focus --direction down']
     bindings: ['alt+j', 'alt+down']
-
-  # Change track next previous 
-  #- commands: ["shell-exec '(New-Object -ComObject WScript.Shell).SendKeys([char]176)'"]
-  #  bindings: ["alt + oem_close_brackets"]
-  #- commands: ["shell-exec (New-Object -ComObject WScript.Shell).SendKeys([char]177)"]
-  #  bindings: ["alt + oem_open_brackets"]
-  #- commands: ["shell-exec (New-Object -ComObject WScript.Shell).SendKeys([char]178)"]
-  #  bindings: ["alt + shift + m"]
 
   # Move focused window in a given direction.
   - commands: ['move --direction left']
@@ -305,10 +295,6 @@ keybindings:
     bindings: ['alt+s']
   - commands: ['focus --prev-active-workspace']
     bindings: ['alt+a']
-
-  # Focus the workspace that last had focus.
-  #- commands: ['focus --recent-workspace']
-  #  bindings: ['alt+d']
 
   # Change focus to a workspace defined in `workspaces` config.
   - commands: ['focus --workspace 1']
