@@ -97,6 +97,7 @@
   { "site": "jma-bitbucket-staging","link": "https://blq-sbx-bitbucket.myjmawireless.com/bitbucket/"},
   { "site": "jma-zabbix","link": "https://zabbix.btc.jma.local"},
   { "site": "jma-vault","link": "https://hashicorp-vault.apps.rdmgmt01.btc.jma.local"},
+  { "site": "jma-dns","link": "https://dns02.btc.jma.local:53443"},
   { "site": "jma-bitbucket","link": "https://bitbucket.myjmawireless.com"},
   { "site": "jma-jenkins","link": "https://jenkins.myjmawireless.com"},
   { "site": "jma-confluence","link": "https://confluence.myjmawireless.com/confluence/display/DSO/DevSecOps+Space+-+Private"},
